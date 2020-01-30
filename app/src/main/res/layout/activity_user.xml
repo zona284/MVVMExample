@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="action"
+            type="com.rakha.mvvmexample.feature.user.UserActionListener"/>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="vm"
+            type="com.rakha.mvvmexample.feature.user.UserViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            imageUrl="@{vm.mainDataField.avatar_url}"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/tvNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{vm.mainDataField.name}"
+            tools:text="Haloo"/>
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="@{vm.mainDataField.location}"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvFollower"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                tools:text="@{vm.mainDataField.followers }"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/tvFollowing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                tools:text="@{vm.mainDataField.following}"/>
+            <TextView
+                android:id="@+id/tvRepos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:onClick="@{()->action.onClickRepos()}"
+                tools:text="@{vm.mainDataField.public_repos}"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="datas"
+            type="com.rakha.mvvmexample.data.DetailsItem"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{datas.title}"
+            android:textStyle="bold"/>
+
+        <WebView
+            android:id="@+id/wvFaq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            webviewContent="@{datas.body}"/>
+
+    </LinearLayout>
+</layout>

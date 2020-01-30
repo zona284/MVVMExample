@@ -1,0 +1,32 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".repo.RepoFragment">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.rakha.mvvmexample.feature.faq.FaqViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFaq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager"
+            faqList="@{vm.faqItemList}"
+            tools:listitem="@layout/item_list_repo"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            visibility="@{vm.progress}"/>
+    </RelativeLayout>
+
+</layout>

@@ -1,5 +1,7 @@
 package com.rakha.mvvmexample.utils
 
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.View
 import android.webkit.WebView
 import android.widget.ImageView
@@ -46,4 +48,8 @@ fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, frameId: Int
     supportFragmentManager.beginTransaction().apply {
         replace(frameId, fragment)
     }.commit()
+}
+
+fun isValidEmail(target: CharSequence) : Boolean {
+    return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches())
 }

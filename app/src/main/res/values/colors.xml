@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#00CAE8</color>
+    <color name="colorPrimaryDark">#009EB5</color>
+    <color name="colorAccent">#84D9FF</color>
+    <color name="colorAccentAlpha18">#2E84D9FF</color>
+    <color name="primary_text_color">#3C3C3C</color>
+    <color name="secondary_text_color">#848484</color>
+    <color name="bg_page">#FFFFFF</color>
+    <color name="bg_screen_default">#F8F8F8</color>
+    <color name="bg_screen_outside">#2E3C3C3C</color>
+    <color name="divider">#D1D1D1</color>
+    <color name="blue_fb">#235378</color>
+    <color name="blue_link">#418BD6</color>
+    <color name="red_google">#A84634</color>
+    <color name="yellow_header_text">#FDA31D</color>
+    <color name="polyline">#348DA8</color>
+    <color name="border">#E3E3E3</color>
+    <color name="dark_green">#005060</color>
+    <color name="success_green">#64BD68</color>
+    <color name="header_pin_history">#6AA6AA</color>
+    <color name="indicator_not_used">#00C9E7</color>
+    <color name="pin_not_used">#1DB194</color>
+    <color name="pin_used">#E70059</color>
+    <color name="counter_notification">#33317E</color>
 </resources>

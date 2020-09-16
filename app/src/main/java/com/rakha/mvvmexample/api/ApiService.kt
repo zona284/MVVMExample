@@ -27,7 +27,7 @@ interface ApiService {
         @Path("username") username: String
     ): Observable<List<RepoData>>
 
-    @GET("https://gaia.sepulsa.com/bumi/static/faq")
+    @GET("https://run.mocky.io/v3/f274f649-26a5-4b04-a5d2-b05816abad43")
     fun getFaq(
 
     ): Observable<Response<BasicResponse<FaqData>>>

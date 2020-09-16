@@ -20,7 +20,7 @@ interface MainDataSource {
     }
 
     interface GetMainDataCallback{
-        fun onDataLoaded(userData: UserData)
+        fun onDataLoaded(userData: UserData?)
         fun onNotAvailable()
         fun onError(msg: String?)
     }

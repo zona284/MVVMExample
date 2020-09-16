@@ -1,11 +1,52 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextInputLayoutLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/secondary_text_color</item>
+    </style>
+
+    <style name="TextInputLayoutLabel.Size12" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/text_size12</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="EditTextTheme.UnderlineTransparent" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@android:color/transparent</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="TextInputEditTextTheme.PrimaryColor" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextInputEditTextTheme.DividerColor" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/divider</item>
+        <item name="colorControlActivated">@color/divider</item>
+        <item name="colorControlHighlight">@color/divider</item>
+
+    </style>
+
+    <style name="TextInputEditTextTheme.UnderlineDividerTransparent" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@android:color/transparent</item>
+        <item name="colorControlActivated">@color/divider</item>
+        <item name="colorControlHighlight">@android:color/transparent</item>
+
     </style>
 
 </resources>

@@ -22,7 +22,7 @@ class MainDataRepository(
                 callback.onError(msg)
             }
 
-            override fun onDataLoaded(userData: UserData) {
+            override fun onDataLoaded(userData: UserData?) {
                 callback.onDataLoaded(userData)
             }
         })

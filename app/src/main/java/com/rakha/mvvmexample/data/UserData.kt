@@ -5,10 +5,10 @@ package com.rakha.mvvmexample.data
  *   2020-01-13
  */
 data class UserData(
-    val name: String,
-    val location: String,
-    val avatar_url: String,
-    val followers: String,
-    val following: String,
-    val public_repos: String
+    var name: String,
+    var location: String,
+    var avatar_url: String,
+    var followers: String,
+    var following: String,
+    var public_repos: String
 )

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_page">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingLeft="@dimen/dimen_margin32"
+            android:paddingRight="@dimen/dimen_margin32"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_margin48"
+                android:text="@string/text_login_your_account"
+                android:textSize="@dimen/text_size30"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_margin24"
+                app:hintTextAppearance="@style/TextInputLayoutLabel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="Email"
+                    android:textSize="@dimen/text_size18"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/primary_text_color"
+                    android:maxLines="1"
+                    android:theme="@style/TextInputEditTextTheme.PrimaryColor"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimen_margin24"
+                app:hintTextAppearance="@style/TextInputLayoutLabel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:hint="Password"
+                    android:textSize="@dimen/text_size18"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/primary_text_color"
+                    android:maxLines="1"
+                    android:theme="@style/TextInputEditTextTheme.PrimaryColor"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ViewAnimator
+                android:id="@+id/va_btn_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_rounded_stroke_primary"
+                    android:textAllCaps="false"
+                    android:textColor="@color/bg_page"
+                    android:text="@string/text_signin"/>
+
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </ViewAnimator>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

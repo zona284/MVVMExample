@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">MVVMExample</string>
+    <string name="text_hello">Hello!</string>
+    <string name="text_login_your_account">Login your account</string>
+    <string name="text_login_with_fb">Login with Facebook</string>
+    <string name="text_login_with_google">Login with Google</string>
+    <string name="text_login_with_email">Login with Email</string>
+    <string name="text_create_account">Create Account, </string>
+    <string name="text_register_here">Register Here</string>
+    <string name="text_signin">Sign In</string>
+    <string name="text_register">Register New Account</string>
+    <string name="text_register_now">Register Now</string>
+    <string name="text_already_have_account">Already have an Account?</string>
+
+    <string name="form_not_completed">Form Not Complete</string>
+    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_your_valid_email">Please enter your valid email</string>
+    <string name="invalid_email_address">invalid email address</string>
+    <string name="please_enter_your_phone">Please enter your phone</string>
+    <string name="please_enter_your_birthdate">Please enter your birth date</string>
+    <string name="please_enter_your_gender">Please enter your gender</string>
+    <string name="please_enter_your_password">Please enter your password</string>
 </resources>

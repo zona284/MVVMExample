@@ -13,6 +13,7 @@ import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatchers
@@ -41,6 +42,12 @@ class UserViewModelUnitTest {
 
     lateinit var testScheduler: TestScheduler
 
+    @get:Rule
+    val taskExecutorRule = InstantTaskExecutorRule()
+
+    @get:Rule
+    val rxSchedulerRule = RxSchedulerRule()
+
     //allow us to run LiveData synchronously
     @get:Rule
     val rule = InstantTaskExecutorRule()
@@ -53,6 +60,12 @@ class UserViewModelUnitTest {
         viewModel = UserViewModel(application, mainDataRepository!!)
         viewModel.userDataLiveData.observeForever(observerUserData)
         testScheduler = TestScheduler()
+    }
+
+    @Test
+    fun testEmpty(){
+        val test = viewModel.userDataLiveData.testObserver()
+        assertTrue(test.observedValues.isEmpty())
     }
 
     @Test

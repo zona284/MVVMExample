@@ -20,13 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{datas.title}"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            tools:text="tes"/>
 
-        <WebView
+        <TextView
             android:id="@+id/wvFaq"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            webviewContent="@{datas.body}"/>
+            android:text="@{datas.body}"
+            tools:text="tes"/>
 
     </LinearLayout>
 </layout>

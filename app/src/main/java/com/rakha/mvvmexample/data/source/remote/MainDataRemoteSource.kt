@@ -61,7 +61,7 @@ object MainDataRemoteSource : MainDataSource {
                                 item.name,
                                 item.language,
                                 item.description,
-                                item.html_url
+                                item.htmlUrl
                             )
                             listRepo.add(repoData)
                         }
@@ -82,7 +82,7 @@ object MainDataRemoteSource : MainDataSource {
             .subscribeOn(Schedulers.io())
             .subscribe(object : ObserverCallback<Response<BasicResponse<FaqData>>>(){
                 override fun onSuccess(obj: Any?) {
-                    Log.i("object",obj.toString())
+                    Log.d("TAG", "getFaqData: ${obj.toString()}")
                     obj?.let {
                         val data = it as FaqData
                         callback.onDataLoaded(data)
@@ -90,6 +90,7 @@ object MainDataRemoteSource : MainDataSource {
                 }
 
                 override fun onFailed(message: String?) {
+                    Log.d("TAG", "getFaqData: $message")
                     callback.onError(message)
 
                 }
@@ -98,5 +99,21 @@ object MainDataRemoteSource : MainDataSource {
 
                 }
             })
+//        apiService.getFaq()
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribeOn(Schedulers.io())
+//            .subscribe(
+//                {
+//                    Log.d("TAG", "getFaqData: ${it}")
+//                    if(it.data != null) {
+//                        callback.onDataLoaded(it.data!!)
+//                    } else {
+//                        callback.onError("Data not found")
+//                    }
+//                },
+//                {
+//                    Log.d("TAG", "getFaqData: ${it.message}")
+//                    callback.onError(it.message)
+//                })
     }
 }

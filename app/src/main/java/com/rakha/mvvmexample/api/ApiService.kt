@@ -5,6 +5,8 @@ import com.rakha.mvvmexample.data.FaqData
 import com.rakha.mvvmexample.data.RepoData
 import com.rakha.mvvmexample.data.UserData
 import io.reactivex.Observable
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -27,18 +29,23 @@ interface ApiService {
         @Path("username") username: String
     ): Observable<List<RepoData>>
 
-    @GET("https://run.mocky.io/v3/f274f649-26a5-4b04-a5d2-b05816abad43")
+    @GET("https://run.mocky.io/v3/1ea1d681-2ccf-4b30-96a6-0dd5eb7ea133")
     fun getFaq(
 
     ): Observable<Response<BasicResponse<FaqData>>>
 
     companion object Factory {
+        private val okHttpClient: OkHttpClient =
+            OkHttpClient.Builder()
+                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .build()
         val retrofit = Retrofit.Builder()
             .addCallAdapterFactory(
                 RxJava2CallAdapterFactory.create())
             .addConverterFactory(
                 GsonConverterFactory.create())
             .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
             .build()
 
         fun create():ApiService{

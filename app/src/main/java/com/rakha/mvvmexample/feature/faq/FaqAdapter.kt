@@ -34,6 +34,7 @@ class FaqAdapter(var data: MutableList<DetailsItem>, val viewModel: FaqViewModel
     }
 
     class FaqViewHolder(val itemListFaqBinding: ItemListFaqBinding): RecyclerView.ViewHolder(itemListFaqBinding.root) {
+
         fun bindRow(data: DetailsItem) {
             itemListFaqBinding.datas = data
             itemListFaqBinding.executePendingBindings()

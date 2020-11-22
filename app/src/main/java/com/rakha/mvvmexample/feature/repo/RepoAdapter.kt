@@ -26,7 +26,7 @@ class RepoAdapter(private var repoData: MutableList<RepoData>, private var repoV
         val datas = repoData[position]
         val actionListener = object : RepoItemActionListener {
             override fun onRepoClicked() {
-                repoViewModel.openRepo.value = datas.html_url
+                repoViewModel.openRepo.value = datas.htmlUrl
             }
 
 

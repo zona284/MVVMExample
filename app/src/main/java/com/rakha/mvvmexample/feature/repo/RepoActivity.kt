@@ -7,6 +7,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.rakha.mvvmexample.R
+import com.rakha.mvvmexample.feature.BaseActivity
 import com.rakha.mvvmexample.utils.obtainViewModel
 import com.rakha.mvvmexample.utils.replaceFragmentInActivity
 
@@ -14,19 +15,27 @@ import com.rakha.mvvmexample.utils.replaceFragmentInActivity
  *   Created By rakha
  *   2020-01-22
  */
-class RepoActivity : AppCompatActivity() {
-
-
+class RepoActivity : BaseActivity() {
     private lateinit var mActivity: AppCompatActivity
     private lateinit var viewModel: RepoViewModel
+
+    override fun initializeViewModel() {
+
+    }
+
+    override fun observeViewModel() {
+        TODO("Not yet implemented")
+    }
+
+    override fun initViewBinding() {
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repo)
 
         mActivity = this
-        setupViewModel()
-        setupFragment()
     }
 
     private fun setupViewModel() {

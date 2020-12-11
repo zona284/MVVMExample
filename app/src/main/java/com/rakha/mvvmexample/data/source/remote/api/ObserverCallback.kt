@@ -1,4 +1,4 @@
-package com.rakha.mvvmexample.api
+package com.rakha.mvvmexample.data.source.remote.api
 
 import org.json.JSONObject
 import okhttp3.ResponseBody

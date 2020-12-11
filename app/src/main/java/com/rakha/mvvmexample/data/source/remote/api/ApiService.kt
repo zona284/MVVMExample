@@ -1,4 +1,4 @@
-package com.rakha.mvvmexample.api
+package com.rakha.mvvmexample.data.source.remote.api
 
 import com.rakha.mvvmexample.BuildConfig
 import com.rakha.mvvmexample.data.FaqData

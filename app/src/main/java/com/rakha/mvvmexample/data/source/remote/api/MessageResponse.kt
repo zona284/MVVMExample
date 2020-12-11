@@ -1,4 +1,4 @@
-package com.rakha.mvvmexample.api
+package com.rakha.mvvmexample.data.source.remote.api
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

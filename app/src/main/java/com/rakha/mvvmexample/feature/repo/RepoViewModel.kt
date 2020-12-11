@@ -25,7 +25,7 @@ class RepoViewModel (application: Application, val mainDataRepository: MainDataR
 
     fun getRepos(){
         progress.set(true)
-        mainDataRepository.getRepoData(object : MainDataSource.GetRepoDataCallback{
+        mainDataRepository.getRepoData(object : MainDataSource.GetBaseDataCallback<MutableList<RepoData?>>{
             override fun onDataLoaded(repoData: MutableList<RepoData?>) {
                 progress.set(false)
                 with(repoList){
@@ -36,12 +36,10 @@ class RepoViewModel (application: Application, val mainDataRepository: MainDataR
 
             override fun onNotAvailable() {
                 progress.set(false)
-                Toast.makeText(getApplication(),"No Data Found", Toast.LENGTH_SHORT).show()
             }
 
             override fun onError(msg: String?) {
                 progress.set(false)
-                Toast.makeText(getApplication(),"Error at - $msg", Toast.LENGTH_SHORT).show()
             }
         })
     }

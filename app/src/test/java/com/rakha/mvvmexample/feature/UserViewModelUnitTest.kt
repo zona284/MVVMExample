@@ -1,25 +1,24 @@
-package com.rakha.mvvmexample
+package com.rakha.mvvmexample.feature
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import com.rakha.mvvmexample.MVVMExampleApplication
 import com.rakha.mvvmexample.data.UserData
 import com.rakha.mvvmexample.data.source.MainDataRepository
 import com.rakha.mvvmexample.data.source.MainDataSource
 import com.rakha.mvvmexample.data.source.remote.MainDataRemoteSource
 import com.rakha.mvvmexample.feature.user.UserViewModel
-import com.rakha.mvvmexample.utils.ViewModelFactory
+import com.rakha.mvvmexample.helper.RxImmediateSchedulerRule
 import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
-import org.mockito.ArgumentCaptor
-import org.mockito.ArgumentMatchers
-import org.mockito.Mock
+import org.mockito.*
 import org.mockito.Mockito.*
-import org.mockito.MockitoAnnotations
+import com.rakha.mvvmexample.helper.any
+import com.rakha.mvvmexample.helper.testObserver
 
 /**
  *   Created By rakha
@@ -42,15 +41,15 @@ class UserViewModelUnitTest {
 
     lateinit var testScheduler: TestScheduler
 
-    @get:Rule
-    val taskExecutorRule = InstantTaskExecutorRule()
+//    @get:Rule
+//    val rxSchedulerRule = RxSchedulerRule()
 
     @get:Rule
-    val rxSchedulerRule = RxSchedulerRule()
+    val rxImmediateSchedulerRule = RxImmediateSchedulerRule()
 
     //allow us to run LiveData synchronously
     @get:Rule
-    val rule = InstantTaskExecutorRule()
+    val taskExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun init(){
@@ -69,35 +68,60 @@ class UserViewModelUnitTest {
     }
 
     @Test
-    fun testMainData(){
-        val mainData = mock(UserData::class.java)
-        mainData.name = "zona284"
+    fun `verify live data for UserData`(){
         val userData = UserData("zona284","","","","","")
-//        mainDataRepository?.getMainData()
-        val callback = mock(MainDataSource.GetMainDataCallback::class.java)
+        viewModel.userDataLiveData.value = userData
+
         viewModel.getUserData()
         val captor = ArgumentCaptor.forClass(UserData::class.java)
         captor.run {
-            verify(observerUserData, never()).onChanged(capture())
+            verify(observerUserData).onChanged(capture())
             assertEquals(userData.name,value.name)
         }
     }
 
     @Test
-    fun testMainDataNotAvailable(){
-        val mainData = mock(UserData::class.java)
-        val callback = mock(MainDataSource.GetMainDataCallback::class.java)
-        `when`(mainDataRemoteSource?.getMainData(callback)).thenCallRealMethod()
-        verify(callback, times(1)).onNotAvailable()
-        verifyZeroInteractions(callback)
+    fun `verify openRepo`(){
+        val userData = UserData("zona284","","","","","")
+        viewModel.mainDataField.set(userData)
+
+        viewModel.openRepo()
+        assertEquals(viewModel.userDataLiveData.value,viewModel.mainDataField.get())
     }
 
     @Test
-    fun testMainDataError(){
-        val mainData = mock(UserData::class.java)
-        val callback = mock(MainDataSource.GetMainDataCallback::class.java)
-        `when`(mainDataRemoteSource?.getMainData(callback)).thenCallRealMethod()
-        verify(callback).onError(ArgumentMatchers.any())
-        verifyZeroInteractions(callback)
+    fun `verify getUserData data loaded`(){
+        val userData = UserData("zona284","","","","","")
+
+        `when`(mainDataRepository?.getMainData(any())).thenAnswer {
+            (it.arguments[0] as MainDataSource.GetBaseDataCallback<UserData>).onDataLoaded(userData)
+        }
+
+        viewModel.getUserData()
+        assertEquals(userData.name,viewModel.mainDataField.get()?.name)
+    }
+
+    @Test
+    fun `verify getUserData onError`(){
+        val userData = UserData("zona284","","","","","")
+
+        `when`(mainDataRepository?.getMainData(any())).thenAnswer {
+            (it.arguments[0] as MainDataSource.GetBaseDataCallback<UserData>).onError("Error")
+        }
+
+        viewModel.getUserData()
+        assertEquals(viewModel.mainDataField.get(), null)
+    }
+
+    @Test
+    fun `verify getUserData not available`(){
+        val userData = UserData("zona284","","","","","")
+
+        `when`(mainDataRepository?.getMainData(any())).thenAnswer {
+            (it.arguments[0] as MainDataSource.GetBaseDataCallback<UserData>).onNotAvailable()
+        }
+
+        viewModel.getUserData()
+        assertEquals(viewModel.mainDataField.get(), null)
     }
 }

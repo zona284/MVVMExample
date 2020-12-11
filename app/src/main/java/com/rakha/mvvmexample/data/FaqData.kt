@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 data class FaqData(
 
 	@field:SerializedName("image")
-	val image: String? = null,
+	var image: String? = null,
 
 	@field:SerializedName("details")
-	val details: List<DetailsItem?>? = null,
+	var details: List<DetailsItem?>? = null,
 
 	@field:SerializedName("title")
-	val title: String? = null,
+	var title: String? = null,
 
 	@field:SerializedName("body")
-	val body: String? = null
+	var body: String? = null
 )

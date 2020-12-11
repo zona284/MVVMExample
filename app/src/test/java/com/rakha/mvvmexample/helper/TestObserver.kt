@@ -1,4 +1,4 @@
-package com.rakha.mvvmexample
+package com.rakha.mvvmexample.helper
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -16,4 +16,5 @@ open class TestObserver<T> : Observer<T> {
     }
 }
 
-fun <T> LiveData<T>.testObserver() = TestObserver<T>().also { observeForever(it) }
+fun <T> LiveData<T>.testObserver() = TestObserver<T>()
+    .also { observeForever(it) }

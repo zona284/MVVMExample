@@ -9,9 +9,11 @@
             type="com.rakha.mvvmexample.feature.faq.FaqViewModel"/>
     </data>
 
-    <RelativeLayout
+    <ViewAnimator
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:measureAllChildren="false"
+        displayedChild="@{vm.displayedChild}">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFaq"
@@ -27,6 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             visibility="@{vm.progress}"/>
-    </RelativeLayout>
+    </ViewAnimator>
 
 </layout>

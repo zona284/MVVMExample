@@ -1,9 +1,9 @@
 package com.rakha.mvvmexample.data.source.remote
 
 import android.util.Log
-import com.rakha.mvvmexample.api.ApiService
-import com.rakha.mvvmexample.api.BasicResponse
-import com.rakha.mvvmexample.api.ObserverCallback
+import com.rakha.mvvmexample.data.source.remote.api.ApiService
+import com.rakha.mvvmexample.data.source.remote.api.BasicResponse
+import com.rakha.mvvmexample.data.source.remote.api.ObserverCallback
 import com.rakha.mvvmexample.data.FaqData
 import com.rakha.mvvmexample.data.RepoData
 import com.rakha.mvvmexample.data.UserData
@@ -21,7 +21,7 @@ object MainDataRemoteSource : MainDataSource {
 
     private val apiService = ApiService.create()
 
-    override fun getMainData(callback: GetMainDataCallback) {
+    override fun getMainData(callback: GetBaseDataCallback<UserData>?) {
         apiService.getMainData("zona284")
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
@@ -35,16 +35,16 @@ object MainDataRemoteSource : MainDataSource {
                         "${it.following}\nFollowings",
                         "${it.public_repos}\nRepos"
                     )
-                    callback.onDataLoaded(mainData)
+                    callback?.onDataLoaded(mainData)
                 } else {
-                    callback.onNotAvailable()
+                    callback?.onNotAvailable()
                 }
             }, {
-                callback.onError(it.message)
+                callback?.onError(it.message)
             })
     }
 
-    override fun getRepoData(callback: GetRepoDataCallback) {
+    override fun getRepoData(callback: GetBaseDataCallback<MutableList<RepoData?>>?) {
         apiService.getReposData("zona284")
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
@@ -65,18 +65,18 @@ object MainDataRemoteSource : MainDataSource {
                             )
                             listRepo.add(repoData)
                         }
-                        callback.onDataLoaded(listRepo)
+                        callback?.onDataLoaded(listRepo)
                     } else {
-                        callback.onNotAvailable()
+                        callback?.onNotAvailable()
                     }
 
                 }
             }, {
-                callback.onError(it.message)
+                callback?.onError(it.message)
             })
     }
 
-    override fun getFaqData(callback: GetBaseDataCallback<FaqData>) {
+    override fun getFaqData(callback: GetBaseDataCallback<FaqData>?) {
         apiService.getFaq()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
@@ -85,13 +85,13 @@ object MainDataRemoteSource : MainDataSource {
                     Log.d("TAG", "getFaqData: ${obj.toString()}")
                     obj?.let {
                         val data = it as FaqData
-                        callback.onDataLoaded(data)
-                    }?: callback.onNotAvailable()
+                        callback?.onDataLoaded(data)
+                    }?: callback?.onNotAvailable()
                 }
 
                 override fun onFailed(message: String?) {
                     Log.d("TAG", "getFaqData: $message")
-                    callback.onError(message)
+                    callback?.onError(message)
 
                 }
 
@@ -99,21 +99,5 @@ object MainDataRemoteSource : MainDataSource {
 
                 }
             })
-//        apiService.getFaq()
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribeOn(Schedulers.io())
-//            .subscribe(
-//                {
-//                    Log.d("TAG", "getFaqData: ${it}")
-//                    if(it.data != null) {
-//                        callback.onDataLoaded(it.data!!)
-//                    } else {
-//                        callback.onError("Data not found")
-//                    }
-//                },
-//                {
-//                    Log.d("TAG", "getFaqData: ${it.message}")
-//                    callback.onError(it.message)
-//                })
     }
 }

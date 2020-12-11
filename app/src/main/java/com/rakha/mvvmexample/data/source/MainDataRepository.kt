@@ -12,50 +12,50 @@ class MainDataRepository(
     val remoteDataSource: MainDataSource,
     val localDataSource: MainDataSource
 ) : MainDataSource{
-    override fun getMainData(callback: MainDataSource.GetMainDataCallback) {
-        remoteDataSource.getMainData(object : MainDataSource.GetMainDataCallback{
+    override fun getMainData(callback: MainDataSource.GetBaseDataCallback<UserData>?) {
+        remoteDataSource.getMainData(object : MainDataSource.GetBaseDataCallback<UserData>{
             override fun onNotAvailable() {
-                callback.onNotAvailable()
+                callback?.onNotAvailable()
             }
 
             override fun onError(msg: String?) {
-                callback.onError(msg)
+                callback?.onError(msg)
             }
 
-            override fun onDataLoaded(userData: UserData?) {
-                callback.onDataLoaded(userData)
+            override fun onDataLoaded(userData: UserData) {
+                callback?.onDataLoaded(userData)
             }
         })
     }
 
-    override fun getRepoData(callback: MainDataSource.GetRepoDataCallback){
-        remoteDataSource.getRepoData(object: MainDataSource.GetRepoDataCallback{
+    override fun getRepoData(callback: MainDataSource.GetBaseDataCallback<MutableList<RepoData?>>?){
+        remoteDataSource.getRepoData(object: MainDataSource.GetBaseDataCallback<MutableList<RepoData?>>{
             override fun onNotAvailable() {
-                callback.onNotAvailable()
+                callback?.onNotAvailable()
             }
 
             override fun onError(msg: String?) {
-                callback.onError(msg)
+                callback?.onError(msg)
             }
 
             override fun onDataLoaded(repoData: MutableList<RepoData?>) {
-                callback.onDataLoaded(repoData)
+                callback?.onDataLoaded(repoData)
             }
         })
     }
 
-    override fun getFaqData(callback: MainDataSource.GetBaseDataCallback<FaqData>) {
+    override fun getFaqData(callback: MainDataSource.GetBaseDataCallback<FaqData>?) {
         remoteDataSource.getFaqData(object : MainDataSource.GetBaseDataCallback<FaqData> {
             override fun onDataLoaded(data: FaqData) {
-                callback.onDataLoaded(data)
+                callback?.onDataLoaded(data)
             }
 
             override fun onNotAvailable() {
-                callback.onNotAvailable()
+                callback?.onNotAvailable()
             }
 
             override fun onError(msg: String?) {
-                callback.onError(msg)
+                callback?.onError(msg)
             }
         })
     }

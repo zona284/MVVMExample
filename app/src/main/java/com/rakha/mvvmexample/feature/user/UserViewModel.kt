@@ -23,19 +23,20 @@ class UserViewModel(application: Application, private val mainDataRepository: Ma
     }
 
     fun getUserData(){
-        mainDataRepository.getMainData(object : MainDataSource.GetMainDataCallback {
-            override fun onDataLoaded(userData: UserData?) {
+        mainDataRepository.getMainData(object : MainDataSource.GetBaseDataCallback<UserData> {
+            override fun onDataLoaded(userData: UserData) {
                 mainDataField.set(userData)
             }
 
             override fun onError(msg: String?) {
-                Toast.makeText(getApplication(), "Error: $msg", Toast.LENGTH_LONG).show()
+//                Toast.makeText(getApplication(), "Error: $msg", Toast.LENGTH_LONG).show()
             }
 
             override fun onNotAvailable() {
-                Toast.makeText(getApplication(), "Data not available", Toast.LENGTH_LONG).show()
+//                Toast.makeText(getApplication(), "Data not available", Toast.LENGTH_LONG).show()
             }
         })
     }
+
 
 }

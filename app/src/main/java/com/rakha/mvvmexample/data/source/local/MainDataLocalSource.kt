@@ -3,6 +3,8 @@ package com.rakha.mvvmexample.data.source.local
 import android.content.SharedPreferences
 import androidx.annotation.VisibleForTesting
 import com.rakha.mvvmexample.data.FaqData
+import com.rakha.mvvmexample.data.RepoData
+import com.rakha.mvvmexample.data.UserData
 import com.rakha.mvvmexample.data.source.MainDataSource
 
 /**
@@ -10,15 +12,15 @@ import com.rakha.mvvmexample.data.source.MainDataSource
  *   2020-01-21
  */
 class MainDataLocalSource private constructor(private val preferences: SharedPreferences) : MainDataSource {
-    override fun getRepoData(callback: MainDataSource.GetRepoDataCallback) {
+    override fun getRepoData(callback: MainDataSource.GetBaseDataCallback<MutableList<RepoData?>>?){
 
     }
 
-    override fun getMainData(callback: MainDataSource.GetMainDataCallback) {
+    override fun getMainData(callback: MainDataSource.GetBaseDataCallback<UserData>?) {
 
     }
 
-    override fun getFaqData(callback: MainDataSource.GetBaseDataCallback<FaqData>) {
+    override fun getFaqData(callback: MainDataSource.GetBaseDataCallback<FaqData>?) {
 
     }
 

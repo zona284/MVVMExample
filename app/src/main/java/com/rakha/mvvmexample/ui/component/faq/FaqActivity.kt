@@ -1,12 +1,9 @@
-package com.rakha.mvvmexample.feature.faq
+package com.rakha.mvvmexample.ui.component.faq
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.rakha.mvvmexample.R
-import com.rakha.mvvmexample.data.DetailsItem
 import com.rakha.mvvmexample.databinding.ActivityFaqBinding
 import com.rakha.mvvmexample.utils.obtainViewModel
 

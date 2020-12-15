@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="vm"
-            type="com.rakha.mvvmexample.feature.faq.FaqViewModel"/>
+            type="com.rakha.mvvmexample.ui.component.faq.FaqViewModel"/>
     </data>
 
     <ViewAnimator

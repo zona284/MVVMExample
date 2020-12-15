@@ -9,9 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.rakha.mvvmexample.data.source.MainDataRepository
 import com.rakha.mvvmexample.data.source.local.MainDataLocalSource
 import com.rakha.mvvmexample.data.source.remote.MainDataRemoteSource
-import com.rakha.mvvmexample.feature.faq.FaqViewModel
-import com.rakha.mvvmexample.feature.repo.RepoViewModel
-import com.rakha.mvvmexample.feature.user.UserViewModel
+import com.rakha.mvvmexample.ui.component.faq.FaqViewModel
+import com.rakha.mvvmexample.ui.component.repo.RepoViewModel
+import com.rakha.mvvmexample.ui.component.user.UserViewModel
 
 /**
  *   Created By rakha

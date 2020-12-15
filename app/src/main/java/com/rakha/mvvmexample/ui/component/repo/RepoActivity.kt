@@ -1,4 +1,4 @@
-package com.rakha.mvvmexample.feature.repo
+package com.rakha.mvvmexample.ui.component.repo
 
 import android.net.Uri
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.rakha.mvvmexample.R
-import com.rakha.mvvmexample.feature.BaseActivity
+import com.rakha.mvvmexample.ui.base.BaseActivity
 import com.rakha.mvvmexample.utils.obtainViewModel
 import com.rakha.mvvmexample.utils.replaceFragmentInActivity
 

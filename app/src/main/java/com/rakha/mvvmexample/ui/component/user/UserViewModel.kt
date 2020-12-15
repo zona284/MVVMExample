@@ -1,7 +1,6 @@
-package com.rakha.mvvmexample.feature.user
+package com.rakha.mvvmexample.ui.component.user
 
 import android.app.Application
-import android.widget.Toast
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.rakha.mvvmexample.data.UserData

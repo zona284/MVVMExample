@@ -1,4 +1,4 @@
-package com.rakha.mvvmexample.feature.repo
+package com.rakha.mvvmexample.ui.component.repo
 
 /**
  *   Created By rakha

@@ -1,18 +1,14 @@
-package com.rakha.mvvmexample.feature.login
+package com.rakha.mvvmexample.ui.component.login
 
-import android.app.ActivityOptions
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
 import com.rakha.mvvmexample.R
-import com.rakha.mvvmexample.feature.user.UserActivity
+import com.rakha.mvvmexample.ui.component.user.UserActivity
 import com.rakha.mvvmexample.utils.isValidEmail
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
 
 /**
  *   Created By rakha

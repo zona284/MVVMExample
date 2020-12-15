@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".feature.user.UserActivity" />
-        <activity android:name=".feature.repo.RepoActivity" />
-        <activity android:name=".feature.faq.FaqActivity" />
-        <activity android:name=".feature.splash.SplashActivity">
+        <activity android:name="com.rakha.mvvmexample.ui.component.user.UserActivity" />
+        <activity android:name="com.rakha.mvvmexample.ui.component.repo.RepoActivity" />
+        <activity android:name="com.rakha.mvvmexample.ui.component.faq.FaqActivity" />
+        <activity android:name="com.rakha.mvvmexample.ui.component.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.login.LoginActivity" />
+        <activity android:name="com.rakha.mvvmexample.ui.component.login.LoginActivity" />
 
     </application>
 </manifest>

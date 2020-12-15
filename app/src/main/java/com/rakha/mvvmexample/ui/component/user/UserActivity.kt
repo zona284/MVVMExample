@@ -1,16 +1,14 @@
-package com.rakha.mvvmexample.feature.user
+package com.rakha.mvvmexample.ui.component.user
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.rakha.mvvmexample.R
 import com.rakha.mvvmexample.databinding.ActivityUserBinding
-import com.rakha.mvvmexample.feature.faq.FaqActivity
-import com.rakha.mvvmexample.feature.repo.RepoActivity
+import com.rakha.mvvmexample.ui.component.faq.FaqActivity
+import com.rakha.mvvmexample.ui.component.repo.RepoActivity
 import com.rakha.mvvmexample.utils.obtainViewModel
 import kotlinx.android.synthetic.main.activity_user.*
 

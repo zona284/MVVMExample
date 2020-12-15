@@ -1,11 +1,9 @@
-package com.rakha.mvvmexample.feature.faq
+package com.rakha.mvvmexample.ui.component.faq
 
-import android.app.Application
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.databinding.ObservableList
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.rakha.mvvmexample.data.DetailsItem
 import com.rakha.mvvmexample.data.FaqData

@@ -1,4 +1,4 @@
-package com.rakha.mvvmexample.feature.user
+package com.rakha.mvvmexample.ui.component.user
 
 /**
  *   Created By rakha

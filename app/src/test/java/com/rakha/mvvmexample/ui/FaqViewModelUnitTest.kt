@@ -1,14 +1,12 @@
-package com.rakha.mvvmexample.feature
+package com.rakha.mvvmexample.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.rakha.mvvmexample.MVVMExampleApplication
-import com.rakha.mvvmexample.data.DetailsItem
 import com.rakha.mvvmexample.data.FaqData
 import com.rakha.mvvmexample.data.source.MainDataRepository
 import com.rakha.mvvmexample.data.source.MainDataSource
 import com.rakha.mvvmexample.data.source.remote.MainDataRemoteSource
-import com.rakha.mvvmexample.feature.faq.FaqViewModel
+import com.rakha.mvvmexample.ui.component.faq.FaqViewModel
 import com.rakha.mvvmexample.helper.RxImmediateSchedulerRule
 import com.rakha.mvvmexample.helper.any
 import io.reactivex.schedulers.TestScheduler

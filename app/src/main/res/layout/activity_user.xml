@@ -5,13 +5,13 @@
     <data>
         <variable
             name="action"
-            type="com.rakha.mvvmexample.feature.user.UserActionListener"/>
+            type="com.rakha.mvvmexample.ui.component.user.UserActionListener"/>
 
         <import type="android.view.View"/>
 
         <variable
             name="vm"
-            type="com.rakha.mvvmexample.feature.user.UserViewModel"/>
+            type="com.rakha.mvvmexample.ui.component.user.UserViewModel"/>
     </data>
 
     <LinearLayout

@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="action"
-            type="com.rakha.mvvmexample.feature.repo.RepoItemActionListener"/>
+            type="com.rakha.mvvmexample.ui.component.repo.RepoItemActionListener"/>
         <variable
             name="datas"
             type="com.rakha.mvvmexample.data.RepoData"/>

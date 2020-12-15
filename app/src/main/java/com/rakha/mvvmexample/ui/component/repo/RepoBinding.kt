@@ -1,7 +1,5 @@
-package com.rakha.mvvmexample.feature.repo
+package com.rakha.mvvmexample.ui.component.repo
 
-import android.view.View
-import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.rakha.mvvmexample.data.RepoData

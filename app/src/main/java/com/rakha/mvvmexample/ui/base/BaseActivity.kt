@@ -1,7 +1,6 @@
-package com.rakha.mvvmexample.feature
+package com.rakha.mvvmexample.ui.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 
 /**

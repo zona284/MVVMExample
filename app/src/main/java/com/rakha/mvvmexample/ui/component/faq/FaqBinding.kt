@@ -1,4 +1,4 @@
-package com.rakha.mvvmexample.feature.faq
+package com.rakha.mvvmexample.ui.component.faq
 
 import android.widget.ViewAnimator
 import androidx.databinding.BindingAdapter

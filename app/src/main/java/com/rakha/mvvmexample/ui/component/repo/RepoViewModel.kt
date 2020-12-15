@@ -1,7 +1,6 @@
-package com.rakha.mvvmexample.feature.repo
+package com.rakha.mvvmexample.ui.component.repo
 
 import android.app.Application
-import android.widget.Toast
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.AndroidViewModel
@@ -9,8 +8,6 @@ import com.rakha.mvvmexample.data.RepoData
 import com.rakha.mvvmexample.data.source.MainDataRepository
 import com.rakha.mvvmexample.data.source.MainDataSource
 import com.rakha.mvvmexample.utils.SingleLiveEvent
-import androidx.lifecycle.MutableLiveData
-import android.view.View
 import androidx.databinding.ObservableField
 
 

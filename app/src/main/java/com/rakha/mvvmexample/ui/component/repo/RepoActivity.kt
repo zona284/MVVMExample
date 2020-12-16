@@ -20,30 +20,25 @@ class RepoActivity : BaseActivity() {
     private lateinit var viewModel: RepoViewModel
 
     override fun initializeViewModel() {
-
+        viewModel = obtainViewModel()
     }
 
     override fun observeViewModel() {
-        TODO("Not yet implemented")
-    }
-
-    override fun initViewBinding() {
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_repo)
-
-        mActivity = this
-    }
-
-    private fun setupViewModel() {
-        viewModel = obtainViewModel().apply{
+        viewModel.apply {
             openRepo.observe(this@RepoActivity, Observer{
                 onRepoClicked(it!!)
             })
         }
+    }
+
+    override fun initViewBinding() {
+        setContentView(R.layout.activity_repo)
+        setupFragment()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mActivity = this
     }
 
     private fun setupFragment() {

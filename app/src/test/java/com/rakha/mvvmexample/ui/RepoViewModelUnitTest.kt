@@ -6,6 +6,7 @@ import com.rakha.mvvmexample.MVVMExampleApplication
 import com.rakha.mvvmexample.data.RepoData
 import com.rakha.mvvmexample.data.source.MainDataRepository
 import com.rakha.mvvmexample.data.source.MainDataSource
+import com.rakha.mvvmexample.data.source.local.MainDataLocalSource
 import com.rakha.mvvmexample.data.source.remote.MainDataRemoteSource
 import com.rakha.mvvmexample.ui.component.repo.RepoViewModel
 import com.rakha.mvvmexample.helper.RxImmediateSchedulerRule
@@ -26,7 +27,7 @@ import org.mockito.MockitoAnnotations
  */
 class RepoViewModelUnitTest {
     @Mock
-    var mainDataLocalSource: MainDataSource? = null
+    var mainDataLocalSource: MainDataLocalSource? = null
 
     @Mock
     var mainDataRemoteSource: MainDataRemoteSource? = Mockito.mock(MainDataRemoteSource::class.java)

@@ -1,8 +1,10 @@
 package com.rakha.mvvmexample.data.source
 
+import com.rakha.mvvmexample.data.ArticleData
 import com.rakha.mvvmexample.data.FaqData
 import com.rakha.mvvmexample.data.RepoData
 import com.rakha.mvvmexample.data.UserData
+import com.rakha.mvvmexample.data.source.local.MainDataLocalSource
 
 /**
  *   Created By rakha
@@ -10,7 +12,7 @@ import com.rakha.mvvmexample.data.UserData
  */
 class MainDataRepository(
     val remoteDataSource: MainDataSource,
-    val localDataSource: MainDataSource
+    val localDataSource: MainDataLocalSource
 ) : MainDataSource{
     override fun getMainData(callback: MainDataSource.GetBaseDataCallback<UserData>?) {
         remoteDataSource.getMainData(object : MainDataSource.GetBaseDataCallback<UserData>{
@@ -60,14 +62,37 @@ class MainDataRepository(
         })
     }
 
+    override fun fetchArticle(
+        callback: MainDataSource.GetBaseDataCallback<ArticleData>?,
+        page: Int,
+        limit: Int
+    ) {
+        remoteDataSource.fetchArticle(
+            object : MainDataSource.GetBaseDataCallback<ArticleData> {
+                override fun onDataLoaded(data: ArticleData) {
+                    callback?.onDataLoaded(data)
+                }
+
+                override fun onNotAvailable() {
+                    callback?.onNotAvailable()
+                }
+
+                override fun onError(msg: String?) {
+                    callback?.onError(msg)
+                }
+            },
+        page,
+        limit
+        )
+    }
 
     companion object {
         private var INSTANCE: MainDataRepository? = null
 
         @JvmStatic
-        fun getInstance(mainDataRemoteSource: MainDataSource, newsLocalDataSource: MainDataSource) =
+        fun getInstance(mainDataRemoteSource: MainDataSource, mainDataLocalSource: MainDataLocalSource) =
             INSTANCE ?: synchronized(MainDataRepository::class.java) {
-                INSTANCE?: MainDataRepository(mainDataRemoteSource, newsLocalDataSource)
+                INSTANCE?: MainDataRepository(mainDataRemoteSource, mainDataLocalSource)
                     .also { INSTANCE = it }
 
             }

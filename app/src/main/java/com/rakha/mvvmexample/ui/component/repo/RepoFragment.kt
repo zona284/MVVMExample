@@ -20,7 +20,7 @@ class RepoFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         viewBinding = FragmentRepoBinding.inflate(inflater, container, false).apply {
-            vm = (activity as RepoActivity).obtainViewModel()
+            vm = (activity as RepoActivity).getViewModel(RepoViewModel::class.java)
         }
         return viewBinding.root
     }

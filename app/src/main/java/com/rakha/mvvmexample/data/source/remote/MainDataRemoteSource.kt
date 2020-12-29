@@ -1,6 +1,7 @@
 package com.rakha.mvvmexample.data.source.remote
 
 import android.util.Log
+import com.rakha.mvvmexample.data.ArticleData
 import com.rakha.mvvmexample.data.source.remote.api.ApiService
 import com.rakha.mvvmexample.data.source.remote.api.BasicResponse
 import com.rakha.mvvmexample.data.source.remote.api.ObserverCallback
@@ -9,6 +10,7 @@ import com.rakha.mvvmexample.data.RepoData
 import com.rakha.mvvmexample.data.UserData
 import com.rakha.mvvmexample.data.source.MainDataSource
 import com.rakha.mvvmexample.data.source.MainDataSource.*
+import com.rakha.mvvmexample.data.source.remote.api.PagingResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
@@ -22,7 +24,7 @@ object MainDataRemoteSource : MainDataSource {
     private val apiService = ApiService.create()
 
     override fun getMainData(callback: GetBaseDataCallback<UserData>?) {
-        apiService.getMainData("zona284")
+                            apiService.getMainData("zona284")
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({
@@ -91,6 +93,31 @@ object MainDataRemoteSource : MainDataSource {
 
                 override fun onFailed(message: String?) {
                     Log.d("TAG", "getFaqData: $message")
+                    callback?.onError(message)
+
+                }
+
+                override fun onMaintenance() {
+
+                }
+            })
+    }
+
+    override fun fetchArticle(callback: GetBaseDataCallback<ArticleData>?, page: Int, limit: Int) {
+        apiService.getArticle(page, limit)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe(object : ObserverCallback<Response<BasicResponse<PagingResponse<ArticleData>>>>(){
+                override fun onSuccess(obj: Any?) {
+                    Log.d("TAG", "fetchArticle: ${obj.toString()}")
+                    obj?.let {
+                        val data = it as ArticleData
+                        callback?.onDataLoaded(data)
+                    }?: callback?.onNotAvailable()
+                }
+
+                override fun onFailed(message: String?) {
+                    Log.d("TAG", "fetchArticle: $message")
                     callback?.onError(message)
 
                 }

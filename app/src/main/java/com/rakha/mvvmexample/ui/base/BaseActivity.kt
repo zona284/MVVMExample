@@ -2,6 +2,8 @@ package com.rakha.mvvmexample.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
+import com.rakha.mvvmexample.utils.obtainViewModel
 
 /**
  *   Created By rakha
@@ -32,4 +34,6 @@ abstract class BaseActivity : AppCompatActivity() {
         initViewBinding()
         observeViewModel()
     }
+
+    open fun <T: ViewModel> getViewModel(viewModel : Class<T>) : T = obtainViewModel(viewModel)
 }

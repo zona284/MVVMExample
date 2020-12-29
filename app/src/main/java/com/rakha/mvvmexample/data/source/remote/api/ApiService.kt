@@ -1,6 +1,7 @@
 package com.rakha.mvvmexample.data.source.remote.api
 
 import com.rakha.mvvmexample.BuildConfig
+import com.rakha.mvvmexample.data.ArticleData
 import com.rakha.mvvmexample.data.FaqData
 import com.rakha.mvvmexample.data.RepoData
 import com.rakha.mvvmexample.data.UserData
@@ -13,6 +14,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  *   Created By rakha
@@ -33,6 +35,12 @@ interface ApiService {
     fun getFaq(
 
     ): Observable<Response<BasicResponse<FaqData>>>
+
+    @GET("https://5f72ba9e6833480016a9bf3e.mockapi.io/api/v1/category/1/articles?p=1&limit=8")
+    fun getArticle(
+        @Query("p") page: Int,
+        @Query("limit") limit: Int
+    ): Observable<Response<BasicResponse<PagingResponse<ArticleData>>>>
 
     companion object Factory {
         private val okHttpClient: OkHttpClient =

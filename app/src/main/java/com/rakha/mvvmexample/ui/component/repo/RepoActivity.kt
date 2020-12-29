@@ -20,7 +20,7 @@ class RepoActivity : BaseActivity() {
     private lateinit var viewModel: RepoViewModel
 
     override fun initializeViewModel() {
-        viewModel = obtainViewModel()
+        viewModel = getViewModel(RepoViewModel::class.java)
     }
 
     override fun observeViewModel() {
@@ -54,8 +54,5 @@ class RepoActivity : BaseActivity() {
         builder.setToolbarColor(ContextCompat.getColor(mActivity, R.color.colorPrimary))
         customTabsIntent.launchUrl(mActivity, Uri.parse(url))
     }
-
-    fun obtainViewModel(): RepoViewModel = obtainViewModel(RepoViewModel::class.java)
-
 
 }

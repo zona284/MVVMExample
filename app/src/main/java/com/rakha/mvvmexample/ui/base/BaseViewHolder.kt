@@ -21,7 +21,7 @@ abstract class BaseViewHolder<T>(rootView: ViewDataBinding) : RecyclerView.ViewH
      * Must called this at the end of binding
      */
     open fun bindItem(item: T) {
-        //BR.itemDetail is static constant.
+        //BR.itemDetail is generated static constant.
         //all variable must have same name
         binding.setVariable(BR.itemDetail, item)
         binding.executePendingBindings()

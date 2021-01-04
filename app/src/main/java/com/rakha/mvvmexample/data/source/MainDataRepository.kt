@@ -64,8 +64,8 @@ class MainDataRepository(
 
     override fun fetchArticle(
         callback: MainDataSource.GetBaseDataCallback<MutableList<ArticleData>>?,
-        page: Int,
-        limit: Int
+        page: Int?,
+        limit: Int?
     ) {
         remoteDataSource.fetchArticle(
             object : MainDataSource.GetBaseDataCallback<MutableList<ArticleData>> {

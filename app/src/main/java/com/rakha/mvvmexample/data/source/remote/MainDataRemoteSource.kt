@@ -103,7 +103,7 @@ object MainDataRemoteSource : MainDataSource {
             })
     }
 
-    override fun fetchArticle(callback: GetBaseDataCallback<MutableList<ArticleData>>?, page: Int, limit: Int) {
+    override fun fetchArticle(callback: GetBaseDataCallback<MutableList<ArticleData>>?, page: Int?, limit: Int?) {
         apiService.getArticle(page, limit)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())

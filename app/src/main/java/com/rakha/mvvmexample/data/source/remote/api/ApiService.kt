@@ -38,8 +38,8 @@ interface ApiService {
 
     @GET("https://5f72ba9e6833480016a9bf3e.mockapi.io/api/v1/new_article")
     fun getArticle(
-        @Query("p") page: Int,
-        @Query("limit") limit: Int
+        @Query("p") page: Int?,
+        @Query("limit") limit: Int?
     ): Observable<Response<BasicResponse<PagingResponse<ArticleData>>>>
 
     companion object Factory {

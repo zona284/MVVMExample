@@ -13,7 +13,7 @@ interface MainDataSource {
     fun getMainData(callback: GetBaseDataCallback<UserData>?)
     fun getRepoData(callback: GetBaseDataCallback<MutableList<RepoData?>>?)
     fun getFaqData(callback: GetBaseDataCallback<FaqData>?)
-    fun fetchArticle(callback: GetBaseDataCallback<ArticleData>?, page: Int, limit: Int)
+    fun fetchArticle(callback: GetBaseDataCallback<MutableList<ArticleData>>?, page: Int, limit: Int)
 
     interface GetBaseDataCallback<T>{
         fun onDataLoaded(data: T)

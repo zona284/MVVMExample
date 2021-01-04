@@ -17,10 +17,8 @@ import com.rakha.mvvmexample.utils.replaceFragmentInActivity
  */
 class RepoActivity : BaseActivity() {
     private lateinit var mActivity: AppCompatActivity
-    private lateinit var viewModel: RepoViewModel
-
-    override fun initializeViewModel() {
-        viewModel = getViewModel(RepoViewModel::class.java)
+    val viewModel: RepoViewModel by lazy {
+        getViewModel(RepoViewModel::class.java)
     }
 
     override fun observeViewModel() {

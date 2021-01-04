@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/bg_page"
+    app:popupTheme="@style/AppTheme.PopupOverlay">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="1dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_page_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dimen_margin70"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:text=""
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/text_size18" />
+
+        <TextView
+            android:id="@+id/tv_page_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dimen_margin16"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:text="Save"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size12"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_page_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dimen_margin16"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size12"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</androidx.appcompat.widget.Toolbar>

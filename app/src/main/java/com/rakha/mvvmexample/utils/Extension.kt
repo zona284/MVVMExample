@@ -14,8 +14,11 @@ import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 
 import android.app.Service
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.annotation.LayoutRes
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -34,6 +37,10 @@ fun loadImage(view: ImageView, url:String?) {
     if (url != null) {
         Glide.with(view.context).load(url).into(view)
     }
+}
+
+fun ViewGroup.inflate(@LayoutRes resource: Int): View {
+    return LayoutInflater.from(context).inflate(resource, this, false)
 }
 
 @BindingAdapter("visibility")

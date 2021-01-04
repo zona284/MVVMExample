@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.rakha.mvvmexample.data.source.MainDataRepository
 import com.rakha.mvvmexample.data.source.local.MainDataLocalSource
 import com.rakha.mvvmexample.data.source.remote.MainDataRemoteSource
+import com.rakha.mvvmexample.ui.component.article.ArticleViewModel
 import com.rakha.mvvmexample.ui.component.faq.FaqViewModel
 import com.rakha.mvvmexample.ui.component.repo.RepoViewModel
 import com.rakha.mvvmexample.ui.component.user.UserViewModel
@@ -31,6 +32,8 @@ class ViewModelFactory private constructor(
                 RepoViewModel(application, mainDataRepository)
             isAssignableFrom(FaqViewModel::class.java) ->
                 FaqViewModel(mainDataRepository)
+            isAssignableFrom(ArticleViewModel::class.java) ->
+                ArticleViewModel(mainDataRepository)
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

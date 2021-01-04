@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="itemDetail"
+            type="com.rakha.mvvmexample.data.ArticleData"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            app:imageUrl="@{itemDetail.image}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{itemDetail.id}"
+                android:textStyle="bold"
+                tools:text="1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{itemDetail.title}"
+                android:textStyle="bold"
+                tools:text="tes"/>
+
+            <TextView
+                android:id="@+id/wvFaq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{itemDetail.description}"
+                tools:text="tes"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

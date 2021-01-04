@@ -1,0 +1,62 @@
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rakha.mvvmexample.ui.component.article.ArticleViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_page">
+
+        <include layout="@layout/main_toolbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?actionBarSize"
+            android:background="@color/bg_screen_default">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ViewAnimator
+                    android:id="@+id/va_article"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:measureAllChildren="false"
+                    app:displayedChild="@{viewModel.displayedChild}">
+
+                    <ProgressBar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_article"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@{viewModel.errorMessage}" />
+
+                </ViewAnimator>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -30,6 +30,7 @@ class RepoAdapter(private var repoData: MutableList<RepoData>, private var repoV
             }
 
 
+
         }
         (holder as RepoHolder).bindRows(datas, actionListener)
     }
@@ -40,7 +41,7 @@ class RepoAdapter(private var repoData: MutableList<RepoData>, private var repoV
     }
 
     class RepoHolder(binding: ItemListRepoBinding) : RecyclerView.ViewHolder(binding.root){
-        val repoItemBinding = binding
+        private val repoItemBinding = binding
 
         fun bindRows(repoData: RepoData, userActionListener: RepoItemActionListener) {
             repoItemBinding.datas =  repoData

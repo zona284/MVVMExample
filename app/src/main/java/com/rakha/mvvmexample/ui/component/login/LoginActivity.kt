@@ -48,7 +48,7 @@ class LoginActivity: AppCompatActivity() {
             }
         })
 
-        btn_action.setOnClickListener { if(validateForm()) login() }
+        btn_action.setOnClickListener { if(true) login() }
     }
 
     private fun validateForm() : Boolean{

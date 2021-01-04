@@ -24,7 +24,7 @@ object MainDataRemoteSource : MainDataSource {
     private val apiService = ApiService.create()
 
     override fun getMainData(callback: GetBaseDataCallback<UserData>?) {
-                            apiService.getMainData("zona284")
+        apiService.getMainData("zona284")
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe({
@@ -103,16 +103,15 @@ object MainDataRemoteSource : MainDataSource {
             })
     }
 
-    override fun fetchArticle(callback: GetBaseDataCallback<ArticleData>?, page: Int, limit: Int) {
+    override fun fetchArticle(callback: GetBaseDataCallback<MutableList<ArticleData>>?, page: Int, limit: Int) {
         apiService.getArticle(page, limit)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe(object : ObserverCallback<Response<BasicResponse<PagingResponse<ArticleData>>>>(){
                 override fun onSuccess(obj: Any?) {
-                    Log.d("TAG", "fetchArticle: ${obj.toString()}")
                     obj?.let {
-                        val data = it as ArticleData
-                        callback?.onDataLoaded(data)
+                        val data = it as PagingResponse<ArticleData>
+                        callback?.onDataLoaded(data.data!!)
                     }?: callback?.onNotAvailable()
                 }
 

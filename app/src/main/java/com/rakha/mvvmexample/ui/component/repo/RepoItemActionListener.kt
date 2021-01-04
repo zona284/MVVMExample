@@ -6,4 +6,8 @@ package com.rakha.mvvmexample.ui.component.repo
  */
 interface RepoItemActionListener {
     fun onRepoClicked()
+
+    interface CustomClick {
+        fun onItemClick()
+    }
 }

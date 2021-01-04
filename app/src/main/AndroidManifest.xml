@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.rakha.mvvmexample.ui.component.login.LoginActivity" />
+        <activity android:name=".ui.component.article.ArticleActivity"/>
 
     </application>
 </manifest>

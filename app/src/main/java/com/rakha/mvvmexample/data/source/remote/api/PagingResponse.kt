@@ -11,5 +11,5 @@ class PagingResponse<T> {
 
     @SerializedName("data")
     @Expose
-    var data: T? = null
+    var data: MutableList<T>? = null
 }

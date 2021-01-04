@@ -36,7 +36,7 @@ interface ApiService {
 
     ): Observable<Response<BasicResponse<FaqData>>>
 
-    @GET("https://5f72ba9e6833480016a9bf3e.mockapi.io/api/v1/category/1/articles?p=1&limit=8")
+    @GET("https://5f72ba9e6833480016a9bf3e.mockapi.io/api/v1/new_article")
     fun getArticle(
         @Query("p") page: Int,
         @Query("limit") limit: Int

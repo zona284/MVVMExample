@@ -92,25 +92,27 @@ class ArticleActivity: BaseActivity() {
         )
 
         val linearLayoutManager = LinearLayoutManager(this)
-        linearLayoutManager.isSmoothScrollbarEnabled = true
-        loadMoreListener = object : EndlessRecyclerOnScrollListener(linearLayoutManager) {
-            override fun onLoadMore(offset: Int) {
-                Log.d(TAG, "onLoadMore: ${articleViewModel.isFinishLoadApi.get()} ${articleViewModel.isNextPageAvailable.get()}")
-                if (articleViewModel.isFinishLoadApi.get() && articleViewModel.isNextPageAvailable.get()) {
-                    //add null data to show loadmore
-                    articleAdapter.setShowLoadMore(true)
-                    articleViewModel.articles.add(null)
-                    articleAdapter.notifyItemInserted(articleViewModel.articles.size - 1)
-                    //fetch data
-                    articleViewModel.isFinishLoadApi.set(false)
-                    articleViewModel.currentPage.set(articleViewModel.currentPage.get()+1)
-                    articleViewModel.getArticleData(isLoadMore = true, isRefresh = false)
-                }
-            }
-        }
+        linearLayoutManager.isSmoothScrollbarEnabled = false
         viewBinding.rvArticle.apply {
             layoutManager = linearLayoutManager
             adapter = articleAdapter
+            loadMoreListener = object : EndlessRecyclerOnScrollListener(linearLayoutManager) {
+                override fun onLoadMore(offset: Int) {
+                    Log.d(TAG, "onLoadMore: ${articleViewModel.isFinishLoadApi.get()} ${articleViewModel.isNextPageAvailable.get()}")
+                    if (articleViewModel.isFinishLoadApi.get() && articleViewModel.isNextPageAvailable.get()) {
+                        articleViewModel.isFinishLoadApi.set(false)
+                        articleViewModel.currentPage.set(articleViewModel.currentPage.get()+1)
+                        post {
+                            //add null data to show loadmore
+                            articleAdapter.setShowLoadMore(true)
+                            articleViewModel.articles.add(null)
+                            articleAdapter.notifyItemInserted(articleViewModel.articles.size - 1)
+                            //fetch data
+                            articleViewModel.getArticleData(isLoadMore = true, isRefresh = false)
+                        }
+                    }
+                }
+            }
             addOnScrollListener(loadMoreListener)
         }
     }

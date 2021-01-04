@@ -58,6 +58,9 @@ open class BaseRecyclerViewAdapter<T, VH>(
     override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
         if (holder.itemViewType == TYPE_ITEM) {
             recyclerAction!!.onCreateListItemView(holder as VH, position)
+            getItem(position)?.let {
+                (holder as BaseViewHolder<T>).bindItem(it)
+            }
         }
     }
 

@@ -11,8 +11,7 @@ import com.rakha.mvvmexample.ui.base.BaseViewHolder
  */
 class ArticleViewHolder(binding: ItemListArticleBinding): BaseViewHolder<ArticleData>(binding) {
 
-    override fun bindItem(item: ArticleData) {
-        binding.setVariable(BR.itemDetail, item)
-        binding.executePendingBindings()
+    fun bindAction() {
+
     }
 }

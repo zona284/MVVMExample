@@ -29,6 +29,13 @@ class ArticleViewModel (val mainDataRepository: MainDataRepository): ViewModel()
     val articles: ObservableList<ArticleData> = ObservableArrayList()
     var displayedChild: ObservableInt = ObservableInt()
     var errorMessage: ObservableField<String> = ObservableField()
+    
+    fun refreshFetchActicle() {
+        currentPage.set(1)
+        isFinishLoadApi.set(false)
+        isNextPageAvailable.set(true)
+        getArticleData( false, true)
+    }
 
     fun getArticleData(isLoadMore: Boolean, isRefresh: Boolean) {
         if(isRefresh) {

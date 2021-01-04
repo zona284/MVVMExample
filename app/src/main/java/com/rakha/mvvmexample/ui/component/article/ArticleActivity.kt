@@ -2,6 +2,7 @@ package com.rakha.mvvmexample.ui.component.article
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
@@ -37,10 +38,7 @@ class ArticleActivity: BaseActivity() {
             lifecycleOwner = this@ArticleActivity
             swipeRefresh.setOnRefreshListener {
                 loadMoreListener.reset()
-                articleViewModel.currentPage.set(1)
-                articleViewModel.isFinishLoadApi.set(false)
-                articleViewModel.isNextPageAvailable.set(true)
-                articleViewModel.getArticleData( false, true)
+                articleViewModel.refreshFetchActicle()
             }
         }
 
@@ -69,7 +67,7 @@ class ArticleActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
         setToolbar((getString(R.string.app_name)))
         initRecyclerView()
-        articleViewModel.getArticleData( false, true)
+        articleViewModel.refreshFetchActicle()
     }
 
     fun initRecyclerView() {
@@ -85,7 +83,9 @@ class ArticleActivity: BaseActivity() {
                 override fun onCreateListItemView(holder: ArticleViewHolder, position: Int) {
                     val item = articleAdapter.getItem(position)
                     item?.let {
-                        holder.bindItem(item)
+                        holder.itemView.setOnClickListener {
+                            Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }

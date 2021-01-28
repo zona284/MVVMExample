@@ -143,8 +143,8 @@ sonarqube {
         property "sonar.projectKey", "zona284_MVVMExample"
         property "sonar.organization", "zona284"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.sources", "src/main/java"
-        property "sonar.tests", ["src/test/java"]
+        property "sonar.sources", "${project.projectDir}src/main/java"
+        property "sonar.tests", ["${project.projectDir}src/test/java"]
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.coverage.exclusions", "${fileFilter.join(',')}"
         property "sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/jacoco/testDebugUnitTest.exec"

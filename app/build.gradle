@@ -111,6 +111,7 @@ def fileFilter = [
         '**/*Adapter*.*',
         '**/*ViewPager*.*',
         '**/*ViewHolder*.*',
+        '**/*Binding*.*',
         '**/**Result*',
         '**/BaseApplication*',
 ]
